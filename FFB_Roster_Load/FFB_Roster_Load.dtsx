@@ -1,0 +1,1085 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/16/2017 8:22:15 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-U2HBKBD"
+  DTS:CreatorName="DESKTOP-U2HBKBD\Bee"
+  DTS:DTSID="{EC1DDF54-3D69-446D-B3BC-03B18BA05864}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.0800.90"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="FFB_Roster_Load"
+  DTS:PackageType="5"
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{C0E37694-5EC1-4A28-9773-80A9F9380C82}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Football_Roster_Load]"
+      DTS:CreationName="FLATFILE"
+      DTS:Description="cvs Playoff Roster Load"
+      DTS:DTSID="{739D9FB0-1C51-4C08-BC51-B965614825E2}"
+      DTS:ObjectName="Football_Roster_Load">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\Bee\Desktop\Git\FFB_Roster_Load\Playoff_Rosters\FFB Roster.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="playerPosition"
+              DTS:DTSID="{3D3F8212-1A41-44E3-AE4A-6FF749230AF7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="firstName"
+              DTS:DTSID="{D6A2C4C2-488C-4358-AF6E-C459D0F88FD4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="lastName"
+              DTS:DTSID="{3985A7A6-93CB-421A-897C-B11477E13F10}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="location"
+              DTS:DTSID="{0AEBDDFB-408E-4F66-B633-24FAC54532A3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="teamName"
+              DTS:DTSID="{3497F8F9-F46C-44F0-A7E5-C19D1C8DDC62}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.Playoff_Fantasy]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{D36FFEEE-EBA4-4C73-8DD3-A7F851065563}"
+      DTS:ObjectName="localhost.Playoff_Fantasy">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-U2HBKBD\SQLEXPRESS;Initial Catalog=Playoff_Fantasy;Integrated Security=True;Application Name=SSIS-FFB_Roster_Load-{D36FFEEE-EBA4-4C73-8DD3-A7F851065563}localhost.Playoff_Fantasy;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Insert FK into players Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{3AA45C63-8276-408F-B18E-0BF65C6D8D45}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Insert FK into players Table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D36FFEEE-EBA4-4C73-8DD3-A7F851065563}"
+          SQLTask:SqlStatementSource="UPDATE       players&#xA;SET                team_FK = teams.team_PK, playerPosition_FK = playerPositions.playerPosition_PK&#xA;FROM            zRawNFLRosters INNER JOIN&#xA;                         playerPositions ON zRawNFLRosters.playerPosition = playerPositions.position INNER JOIN&#xA;                         teams ON zRawNFLRosters.teamName = teams.teamName INNER JOIN&#xA;                         locations ON zRawNFLRosters.location = locations.location INNER JOIN&#xA;                         players ON zRawNFLRosters.firstName = players.firstName AND zRawNFLRosters.lastName = players.lastName" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\NFL Player Names into players table"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{A9A8957D-DDA2-4E97-ACA3-20D5ADB3010D}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="NFL Player Names into players table"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\NFL Player Names into players table\ADO NET Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="ADO NET Destination"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."players"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\NFL Player Names into players table\ADO NET Destination.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.Playoff_Fantasy]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.Playoff_Fantasy]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\NFL Player Names into players table\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\NFL Player Names into players table\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[firstName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="firstName"
+                      externalMetadataColumnId="Package\NFL Player Names into players table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[firstName]"
+                      lineageId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Output].Columns[firstName]" />
+                    <inputColumn
+                      refId="Package\NFL Player Names into players table\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[lastName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="lastName"
+                      externalMetadataColumnId="Package\NFL Player Names into players table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[lastName]"
+                      lineageId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Output].Columns[lastName]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\NFL Player Names into players table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[player_PK]"
+                      dataType="i4"
+                      name="player_PK" />
+                    <externalMetadataColumn
+                      refId="Package\NFL Player Names into players table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[firstName]"
+                      dataType="wstr"
+                      length="50"
+                      name="firstName" />
+                    <externalMetadataColumn
+                      refId="Package\NFL Player Names into players table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[lastName]"
+                      dataType="wstr"
+                      length="50"
+                      name="lastName" />
+                    <externalMetadataColumn
+                      refId="Package\NFL Player Names into players table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[team_FK]"
+                      dataType="i4"
+                      name="team_FK" />
+                    <externalMetadataColumn
+                      refId="Package\NFL Player Names into players table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[playerPosition_FK]"
+                      dataType="i4"
+                      name="playerPosition_FK" />
+                    <externalMetadataColumn
+                      refId="Package\NFL Player Names into players table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[isHealthy]"
+                      dataType="i4"
+                      name="isHealthy" />
+                    <externalMetadataColumn
+                      refId="Package\NFL Player Names into players table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[isStarter]"
+                      dataType="wstr"
+                      length="50"
+                      name="isStarter" />
+                    <externalMetadataColumn
+                      refId="Package\NFL Player Names into players table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[isLoaded]"
+                      dataType="wstr"
+                      length="50"
+                      name="isLoaded" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\NFL Player Names into players table\ADO NET Destination.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\NFL Player Names into players table\ADO NET Destination.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\NFL Player Names into players table\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\NFL Player Names into players table\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\NFL Player Names into players table\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\NFL Player Names into players table\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\NFL Player Names into players table\ADO NET Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="ADO NET Source"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT       zRawNFLRosters.firstName, zRawNFLRosters.lastName 
+FROM            players RIGHT OUTER JOIN
+                         zRawNFLRosters ON players.firstName = zRawNFLRosters.firstName AND players.lastName = zRawNFLRosters.lastName
+WHERE        (players.isLoaded IS NULL)</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."zRawNFLRosters"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\NFL Player Names into players table\ADO NET Source.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.Playoff_Fantasy]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.Playoff_Fantasy]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Output].Columns[firstName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[firstName]"
+                      length="50"
+                      lineageId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Output].Columns[firstName]"
+                      name="firstName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Output].Columns[lastName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[lastName]"
+                      length="50"
+                      lineageId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Output].Columns[lastName]"
+                      name="lastName"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[firstName]"
+                      dataType="wstr"
+                      length="50"
+                      name="firstName" />
+                    <externalMetadataColumn
+                      refId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[lastName]"
+                      dataType="wstr"
+                      length="50"
+                      name="lastName" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[firstName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[firstName]"
+                      name="firstName" />
+                    <outputColumn
+                      refId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[lastName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[lastName]"
+                      name="lastName" />
+                    <outputColumn
+                      refId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\NFL Player Names into players table.Paths[ADO NET Source Output]"
+              endId="Package\NFL Player Names into players table\ADO NET Destination.Inputs[ADO NET Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\NFL Playoff Roster Load into zRawNFLRosters"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{52590022-aeaf-47b2-a016-a445dad11586}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="NFL Playoff Roster Load into zRawNFLRosters"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="ADO NET Destination"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."zRawNFLRosters"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.Playoff_Fantasy]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.Playoff_Fantasy]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[playerPosition]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="playerPosition"
+                      externalMetadataColumnId="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[playerPosition]"
+                      lineageId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Outputs[Flat File Source Output].Columns[playerPosition]" />
+                    <inputColumn
+                      refId="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[firstName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="firstName"
+                      externalMetadataColumnId="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[firstName]"
+                      lineageId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Outputs[Flat File Source Output].Columns[firstName]" />
+                    <inputColumn
+                      refId="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[lastName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="lastName"
+                      externalMetadataColumnId="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[lastName]"
+                      lineageId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Outputs[Flat File Source Output].Columns[lastName]" />
+                    <inputColumn
+                      refId="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[location]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="location"
+                      externalMetadataColumnId="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[location]"
+                      lineageId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Outputs[Flat File Source Output].Columns[location]" />
+                    <inputColumn
+                      refId="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[teamName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="teamName"
+                      externalMetadataColumnId="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[teamName]"
+                      lineageId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Outputs[Flat File Source Output].Columns[teamName]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[playerPosition]"
+                      dataType="wstr"
+                      length="100"
+                      name="playerPosition" />
+                    <externalMetadataColumn
+                      refId="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[firstName]"
+                      dataType="wstr"
+                      length="50"
+                      name="firstName" />
+                    <externalMetadataColumn
+                      refId="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[lastName]"
+                      dataType="wstr"
+                      length="50"
+                      name="lastName" />
+                    <externalMetadataColumn
+                      refId="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[location]"
+                      dataType="wstr"
+                      length="50"
+                      name="location" />
+                    <externalMetadataColumn
+                      refId="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[teamName]"
+                      dataType="wstr"
+                      length="50"
+                      name="teamName" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="cvs NFL Rosters"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Football_Roster_Load]"
+                  connectionManagerRefId="Package.ConnectionManagers[Football_Roster_Load]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Outputs[Flat File Source Output].Columns[playerPosition]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Outputs[Flat File Source Output].ExternalColumns[playerPosition]"
+                      length="50"
+                      lineageId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Outputs[Flat File Source Output].Columns[playerPosition]"
+                      name="playerPosition"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Outputs[Flat File Source Output].Columns[firstName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Outputs[Flat File Source Output].ExternalColumns[firstName]"
+                      length="50"
+                      lineageId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Outputs[Flat File Source Output].Columns[firstName]"
+                      name="firstName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Outputs[Flat File Source Output].Columns[lastName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Outputs[Flat File Source Output].ExternalColumns[lastName]"
+                      length="50"
+                      lineageId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Outputs[Flat File Source Output].Columns[lastName]"
+                      name="lastName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Outputs[Flat File Source Output].Columns[location]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Outputs[Flat File Source Output].ExternalColumns[location]"
+                      length="50"
+                      lineageId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Outputs[Flat File Source Output].Columns[location]"
+                      name="location"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Outputs[Flat File Source Output].Columns[teamName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Outputs[Flat File Source Output].ExternalColumns[teamName]"
+                      length="50"
+                      lineageId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Outputs[Flat File Source Output].Columns[teamName]"
+                      name="teamName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Outputs[Flat File Source Output].ExternalColumns[playerPosition]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="playerPosition" />
+                    <externalMetadataColumn
+                      refId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Outputs[Flat File Source Output].ExternalColumns[firstName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="firstName" />
+                    <externalMetadataColumn
+                      refId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Outputs[Flat File Source Output].ExternalColumns[lastName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="lastName" />
+                    <externalMetadataColumn
+                      refId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Outputs[Flat File Source Output].ExternalColumns[location]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="location" />
+                    <externalMetadataColumn
+                      refId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Outputs[Flat File Source Output].ExternalColumns[teamName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="teamName" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\NFL Playoff Roster Load into zRawNFLRosters.Paths[Flat File Source Output]"
+              endId="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination.Inputs[ADO NET Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate zRawNFLRosters"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{946E47D2-1FCD-4477-9AEA-936C0B02D8DB}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate zRawNFLRosters"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D36FFEEE-EBA4-4C73-8DD3-A7F851065563}"
+          SQLTask:SqlStatementSource="truncate table zRawNFLRosters" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update isLoaded to 'Y'"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{476967E8-9E09-4CF9-A996-A21600838805}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update isLoaded to 'Y'"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D36FFEEE-EBA4-4C73-8DD3-A7F851065563}"
+          SQLTask:SqlStatementSource="UPDATE       players&#xA;SET                isLoaded = 'Y'&#xA;WHERE        (isLoaded IS NULL)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{F162F27D-3621-46D3-A3D2-756C056083EA}"
+      DTS:From="Package\Truncate zRawNFLRosters"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\NFL Playoff Roster Load into zRawNFLRosters" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{C80FDDE0-74AD-4143-A8C2-D5BE335BC553}"
+      DTS:From="Package\NFL Playoff Roster Load into zRawNFLRosters"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\NFL Player Names into players table" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{2FD8BAA4-8978-4639-A145-BC7E16D4C92D}"
+      DTS:From="Package\NFL Player Names into players table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Insert FK into players Table" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{A3569817-8F7D-46FE-AD73-7A39B8B4873E}"
+      DTS:From="Package\Insert FK into players Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Update isLoaded to 'Y'" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="249,42"
+          Id="Package\NFL Player Names into players table"
+          TopLeft="414,289" />
+        <NodeLayout
+          Size="202,42"
+          Id="Package\Truncate zRawNFLRosters"
+          TopLeft="432,34" />
+        <NodeLayout
+          Size="209,42"
+          Id="Package\Insert FK into players Table"
+          TopLeft="430,383" />
+        <NodeLayout
+          Size="294,42"
+          Id="Package\NFL Playoff Roster Load into zRawNFLRosters"
+          TopLeft="387,128" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="533.5,76">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52"
+              Start="0,0"
+              End="0,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="536.5,331">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52"
+              Start="0,0"
+              End="0,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="536.25,170">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,119"
+              Start="0,0"
+              End="0,111.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,111.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Update isLoaded to 'Y'"
+          TopLeft="449,465" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="537.75,425">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40"
+              Start="0,0"
+              End="0,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\NFL Player Names into players table">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="179,42"
+          Id="Package\NFL Player Names into players table\ADO NET Destination"
+          TopLeft="313,302" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\NFL Player Names into players table\ADO NET Source"
+          TopLeft="283,135" />
+        <EdgeLayout
+          Id="Package\NFL Player Names into players table.Paths[ADO NET Source Output]"
+          TopLeft="362,177">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="40.5,125"
+              Start="0,0"
+              End="40.5,117.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,58.5"
+                    Point2="0,62.5"
+                    Point3="4,62.5" />
+                  <mssgle:LineSegment
+                    End="36.5,62.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="36.5,62.5"
+                    Point2="40.5,62.5"
+                    Point3="40.5,66.5" />
+                  <mssgle:LineSegment
+                    End="40.5,117.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\NFL Player Names into players table\ADO NET Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\NFL Playoff Roster Load into zRawNFLRosters">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="179,42"
+          Id="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination"
+          TopLeft="313,302" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters"
+          TopLeft="222,169" />
+        <EdgeLayout
+          Id="Package\NFL Playoff Roster Load into zRawNFLRosters.Paths[Flat File Source Output]"
+          TopLeft="299,211">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="103.5,91"
+              Start="0,0"
+              End="103.5,83.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.5"
+                    Point2="0,45.5"
+                    Point3="4,45.5" />
+                  <mssgle:LineSegment
+                    End="99.5,45.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="99.5,45.5"
+                    Point2="103.5,45.5"
+                    Point3="103.5,49.5" />
+                  <mssgle:LineSegment
+                    End="103.5,83.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\NFL Player Names into players table\ADO NET Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

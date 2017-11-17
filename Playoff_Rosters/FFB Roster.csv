@@ -1,0 +1,183 @@
+playerPosition,firstName,lastName,location,teamName
+D,New England,,New England,Patriots
+QB,Tom,Brady,New England,Patriots
+RB,LaGarette,Blount,New England,Patriots
+RB,James,White,New England,Patriots
+WR,Julian,Edelman,New England,Patriots
+WR,Chris,Hogan,New England,Patriots
+TE,Martellus,Bennett,New England,Patriots
+K,Stephen,Gostkowski,New England,Patriots
+WR,Danny,Amendola,New England,Patriots
+WR,Michael,Floyd,New England,Patriots
+WR,Malcolm,Mitchell,New England,Patriots
+RB,Dion,Lewis,New England,Patriots
+RB,Brandon,Bolden,New England,Patriots
+TE,Matt,Lengel,New England,Patriots
+D,Dallas,,Dallas,Cowboys
+QB,Dak,Prescott,Dallas,Cowboys
+RB,Zek,Elliot,Dallas,Cowboys
+RB,Alfred,Morris,Dallas,Cowboys
+WR,Dez,Bryant,Dallas,Cowboys
+WR,Cole,Beasley,Dallas,Cowboys
+TE,Jason,Witten,Dallas,Cowboys
+K,Dan,Bailey,Dallas,Cowboys
+WR,Terrance,Williams,Dallas,Cowboys
+WR,Bruce,Bulter,Dallas,Cowboys
+WR,Lucky,Whitehead,Dallas,Cowboys
+RB,Lance,Dunbar,Dallas,Cowboys
+RB,Darren,McFadden,Dallas,Cowboys
+TE,Gavin,Escobar,Dallas,Cowboys
+D,Miami,,Miami,Dolphins
+QB,Matt,Moore,Miami,Dolphins
+RB,Jay,Ajayi,Miami,Dolphins
+RB,Damien,WIlliams,Miami,Dolphins
+WR,Jarvis,Landry,Miami,Dolphins
+WR,Kenny,Stills,Miami,Dolphins
+TE,Dion,Sims,Miami,Dolphins
+K,Andrew,Franks,Miami,Dolphins
+WR,DeVante,Parker,Miami,Dolphins
+WR,Leonte,Carroo,Miami,Dolphins
+WR,Jakeem,Grant,Miami,Dolphins
+RB,Kenyan,Drake,Miami,Dolphins
+RB,MarQuesis,Gray,Miami,Dolphins
+TE,Dominique,Jones,Miami,Dolphins
+D,Detroit,,Detroit,Lions
+QB,Matthew,Stafford,Detroit,Lions
+RB,Zach,Zenner,Detroit,Lions
+RB,Dwayne,Washington,Detroit,Lions
+WR,Golden,Tate,Detroit,Lions
+WR,Marvin,Jones,Detroit,Lions
+TE,Eric,Ebron,Detroit,Lions
+K,Matt,Prater,Detroit,Lions
+WR,Anquan,Bolden,Detroit,Lions
+WR,Andre,Roberts,Detroit,Lions
+WR,T.J.,Jones,Detroit,Lions
+RB,Joique,Bell,Detroit,Lions
+RB,Theo,Riddick,Detroit,Lions
+TE,Clay,Harbor,Detroit,Lions
+D,Kansas City,,Kansas City,Chiefs
+QB,Alex,Smith,Kansas City,Chiefs
+RB,Spencer,Ware,Kansas City,Chiefs
+RB,Charcandrick,West,Kansas City,Chiefs
+WR,Jeremy,Maclin,Kansas City,Chiefs
+WR,Tyreek,Hill,Kansas City,Chiefs
+TE,Travis,Kelce,Kansas City,Chiefs
+K,Cairo,Santos,Kansas City,Chiefs
+WR,Chris,Conley,Kansas City,Chiefs
+WR,Albert,Wilson,Kansas City,Chiefs
+WR,Demarcus,Robinson,Kansas City,Chiefs
+RB,Knile,Davis,Kansas City,Chiefs
+RB,Anthony,Sherman,Kansas City,Chiefs
+TE,Demetrius,Harris,Kansas City,Chiefs
+D,Atlanta,,Atlanta,Falcons
+QB,Matt,Ryan,Atlanta,Falcons
+RB,Devonta,Freeman,Atlanta,Falcons
+RB,Tevin,Coleman,Atlanta,Falcons
+WR,Julio,Jones,Atlanta,Falcons
+WR,Mohamed,Sanu,Atlanta,Falcons
+TE,Levine,Toilolo,Atlanta,Falcons
+K,Matt,Bryant,Atlanta,Falcons
+WR,Taylor,Gabriel,Atlanta,Falcons
+WR,Aldrick,Robinson,Atlanta,Falcons
+WR,Justin,Hardy,Atlanta,Falcons
+RB,Terron,Ward,Atlanta,Falcons
+RB,Patrick,DiMarco,Atlanta,Falcons
+TE,Austin,Hooper,Atlanta,Falcons
+D,Pittsburgh,,Pittsburgh,Steelers
+QB,Ben,Roethlisberger,Pittsburgh,Steelers
+RB,LeVeon,Bell,Pittsburgh,Steelers
+RB,DeAngelo,Williams,Pittsburgh,Steelers
+WR,Antonio,Brown,Pittsburgh,Steelers
+WR,Eli,Rogers,Pittsburgh,Steelers
+TE,Jesse,James,Pittsburgh,Steelers
+K,Chris,Boswell,Pittsburgh,Steelers
+WR,Sammie,Coates,Pittsburgh,Steelers
+WR,Darrius,Heyward-Bay,Pittsburgh,Steelers
+WR,Cobi,Hamilton,Pittsburgh,Steelers
+RB,Fitzgerald,Toussaint,Pittsburgh,Steelers
+RB,Roosevelt,Nix,Pittsburgh,Steelers
+TE,Ladrius,Green,Pittsburgh,Steelers
+D,Seattle,,Seattle,Seahawks
+QB,Russell,Wilson,Seattle,Seahawks
+RB,Thomas,Rawls,Seattle,Seahawks
+RB,CJ,Prosise,Seattle,Seahawks
+WR,Doug,Baldwin,Seattle,Seahawks
+WR,Jermaine,Kearse,Seattle,Seahawks
+TE,Jimmy,Graham,Seattle,Seahawks
+K,Steven,Hauschka,Seattle,Seahawks
+WR,Tanner,McEvoy,Seattle,Seahawks
+WR,JD,Mckissic,Seattle,Seahawks
+WR,Paul,Richardson,Seattle,Seahawks
+RB,Alex,Collins,Seattle,Seahawks
+RB,Marcel,Reece,Seattle,Seahawks
+TE,Luke,Wilson,Seattle,Seahawks
+D,Houston,,Houston,Texans
+QB,Brock,Osweiler,Houston,Texans
+RB,Lamar,Miller,Houston,Texans
+RB,Alfred,Blue,Houston,Texans
+WR,DeAndre,Hopkins,Houston,Texans
+WR,Will,Fuller,Houston,Texans
+TE,C.J.,Fiedorowicz,Houston,Texans
+K,Nick,Novak,Houston,Texans
+WR,Keith,Mumphery,Houston,Texans
+WR,Wendall,Willams,Houston,Texans
+WR,Branxton,Miller,Houston,Texans
+RB,Tyler,Ervin,Houston,Texans
+RB,Jay,Prosch,Houston,Texans
+TE,Ryan,Griffin,Houston,Texans
+D,Green Bay,,Green Bay,Packers
+QB,Aaron,Rodgers,Green Bay,Packers
+RB,Ty,Montgomery,Green Bay,Packers
+RB,James,Starks,Green Bay,Packers
+WR,Jordy,Nelson,Green Bay,Packers
+WR,Randall,Cobb,Green Bay,Packers
+TE,Richard,Rodgers,Green Bay,Packers
+K,Mason,Crosby,Green Bay,Packers
+WR,Davonte,Adams,Green Bay,Packers
+WR,Jeff,Janis,Green Bay,Packers
+WR,Geronimo,Allison,Green Bay,Packers
+RB,Aaron,Ripkowski,Green Bay,Packers
+RB,Christine,Michael,Green Bay,Packers
+TE,Jared,Cook,Green Bay,Packers
+D,Oakland,,Oakland,Raiders
+QB,Matt,McGloin,Oakland,Raiders
+RB,Latavius,Murray,Oakland,Raiders
+RB,DeAndre,Washington,Oakland,Raiders
+WR,Amari,Cooper,Oakland,Raiders
+WR,Michael,Crabtree,Oakland,Raiders
+TE,Clive,Walford,Oakland,Raiders
+K,Sebastian,Janikowski,Oakland,Raiders
+WR,Seth,Roberts,Oakland,Raiders
+WR,Andre,Roberts,Oakland,Raiders
+WR,Johnny,Holton,Oakland,Raiders
+RB,Jalen,Richard,Oakland,Raiders
+RB,Jamize,Olawale,Oakland,Raiders
+TE,Mychal,Rivera,Oakland,Raiders
+D,New York,,New York,Giants
+QB,Eli,Manning,New York,Giants
+RB,Paul,Perkins,New York,Giants
+RB,Rashard,Jennings,New York,Giants
+WR,Odell,Beckham,New York,Giants
+WR,Sterling,Shepard,New York,Giants
+TE,Will,Tye,New York,Giants
+K,Robbie,Gould,New York,Giants
+WR,Victor,Cruz,New York,Giants
+WR,Dwayne,Harris,New York,Giants
+WR,Tavarres,Kings,New York,Giants
+RB,Bobby,Rainey,New York,Giants
+RB,Jerell,Adams,New York,Giants
+TE,Larry,Donnell,New York,Giants
+D,Philadelphia,,Philadelphia,Eagles
+QB,Carson,Wentz,Philadelphia,Eagles
+RB,Corey,Clement,Philadelphia,Eagles
+RB,Darren,Sproles,Philadelphia,Eagles
+WR,Alshon,Jeffery,Philadelphia,Eagles
+WR,Torrey,Smith,Philadelphia,Eagles
+TE,Zach,Ertz,Philadelphia,Eagles
+K,Robbie,Gould,Philadelphia,Eagles
+WR,Nelson,Agholor,Philadelphia,Eagles
+WR,Marcus,Johnson,Philadelphia,Eagles
+WR,Mack,Hollins,Philadelphia,Eagles
+RB,Wendell,Smallwood,Philadelphia,Eagles
+RB,Jerell,Adams,Philadelphia,Eagles
+TE,Brent,Celek,Philadelphia,Eagles
