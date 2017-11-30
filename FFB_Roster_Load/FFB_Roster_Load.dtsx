@@ -11,11 +11,31 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="FFB_Roster_Load"
   DTS:PackageType="5"
-  DTS:VersionBuild="11"
-  DTS:VersionGUID="{C0E37694-5EC1-4A28-9773-80A9F9380C82}">
+  DTS:VersionBuild="36"
+  DTS:VersionGUID="{7D35CD8C-82E7-4379-B93E-A9AC2E4F1E4D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-U2HBKBD\SQLEXPRESS.FantasyDatabase]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{DD7A5841-6888-4E5F-A769-92685B9EA910}"
+      DTS:ObjectName="DESKTOP-U2HBKBD\SQLEXPRESS.FantasyDatabase">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-U2HBKBD\SQLEXPRESS;Initial Catalog=FantasyDatabase;Integrated Security=True;Application Name=SSIS-FFB_Roster_Load-{DD7A5841-6888-4E5F-A769-92685B9EA910}DESKTOP-U2HBKBD\SQLEXPRESS.FantasyDatabase;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-U2HBKBD\SQLEXPRESS.FantasyDatabase1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{DF63E6A5-498A-45E5-9876-F33C576F1B37}"
+      DTS:ObjectName="DESKTOP-U2HBKBD\SQLEXPRESS.FantasyDatabase1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-U2HBKBD\SQLEXPRESS;Initial Catalog=FantasyDatabase;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[Football_Roster_Load]"
       DTS:CreationName="FLATFILE"
@@ -40,7 +60,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="playerPosition"
-              DTS:DTSID="{3D3F8212-1A41-44E3-AE4A-6FF749230AF7}"
+              DTS:DTSID="{689EAAB7-2E2E-4067-87CD-8318586BA6C8}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -49,7 +69,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="firstName"
-              DTS:DTSID="{D6A2C4C2-488C-4358-AF6E-C459D0F88FD4}"
+              DTS:DTSID="{952AB3DF-9ECA-4B6E-8F7B-9114D40D2C27}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -58,7 +78,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="lastName"
-              DTS:DTSID="{3985A7A6-93CB-421A-897C-B11477E13F10}"
+              DTS:DTSID="{AD6CA00A-5F1F-4145-A9A7-64D9F33F46F8}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -67,7 +87,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="location"
-              DTS:DTSID="{0AEBDDFB-408E-4F66-B633-24FAC54532A3}"
+              DTS:DTSID="{26141466-79F2-4CBC-899E-915E18801732}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -76,20 +96,10 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="teamName"
-              DTS:DTSID="{3497F8F9-F46C-44F0-A7E5-C19D1C8DDC62}"
+              DTS:DTSID="{02E13B58-2FBE-4CDF-B95B-4989A3B32773}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[localhost.Playoff_Fantasy]"
-      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
-      DTS:DTSID="{D36FFEEE-EBA4-4C73-8DD3-A7F851065563}"
-      DTS:ObjectName="localhost.Playoff_Fantasy">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=DESKTOP-U2HBKBD\SQLEXPRESS;Initial Catalog=Playoff_Fantasy;Integrated Security=True;Application Name=SSIS-FFB_Roster_Load-{D36FFEEE-EBA4-4C73-8DD3-A7F851065563}localhost.Playoff_Fantasy;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -108,8 +118,8 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{D36FFEEE-EBA4-4C73-8DD3-A7F851065563}"
-          SQLTask:SqlStatementSource="UPDATE       players&#xA;SET                team_FK = teams.team_PK, playerPosition_FK = playerPositions.playerPosition_PK&#xA;FROM            zRawNFLRosters INNER JOIN&#xA;                         playerPositions ON zRawNFLRosters.playerPosition = playerPositions.position INNER JOIN&#xA;                         teams ON zRawNFLRosters.teamName = teams.teamName INNER JOIN&#xA;                         locations ON zRawNFLRosters.location = locations.location INNER JOIN&#xA;                         players ON zRawNFLRosters.firstName = players.firstName AND zRawNFLRosters.lastName = players.lastName" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:Connection="{DF63E6A5-498A-45E5-9876-F33C576F1B37}"
+          SQLTask:SqlStatementSource="UPDATE       players&#xA;SET                playerPositionid = playerPositions.id&#xA;FROM            zRawNFLRosters INNER JOIN&#xA;                         players ON zRawNFLRosters.firstName = players.firstName AND zRawNFLRosters.lastName = players.lastName INNER JOIN&#xA;                         playerPositions ON zRawNFLRosters.playerPosition = playerPositions.[position]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -163,8 +173,8 @@
               <connections>
                 <connection
                   refId="Package\NFL Player Names into players table\ADO NET Destination.Connections[IDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[localhost.Playoff_Fantasy]"
-                  connectionManagerRefId="Package.ConnectionManagers[localhost.Playoff_Fantasy]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-U2HBKBD\SQLEXPRESS.FantasyDatabase]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-U2HBKBD\SQLEXPRESS.FantasyDatabase]"
                   description="Managed connection manager"
                   name="IDbConnection" />
               </connections>
@@ -177,25 +187,29 @@
                   <inputColumns>
                     <inputColumn
                       refId="Package\NFL Player Names into players table\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[firstName]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
+                      cachedDataType="nText"
                       cachedName="firstName"
                       externalMetadataColumnId="Package\NFL Player Names into players table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[firstName]"
                       lineageId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Output].Columns[firstName]" />
                     <inputColumn
                       refId="Package\NFL Player Names into players table\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[lastName]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
+                      cachedDataType="nText"
                       cachedName="lastName"
                       externalMetadataColumnId="Package\NFL Player Names into players table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[lastName]"
                       lineageId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Output].Columns[lastName]" />
+                    <inputColumn
+                      refId="Package\NFL Player Names into players table\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Id]"
+                      cachedDataType="i4"
+                      cachedName="Id"
+                      externalMetadataColumnId="Package\NFL Player Names into players table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[teamid]"
+                      lineageId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Output].Columns[Id]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\NFL Player Names into players table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[player_PK]"
+                      refId="Package\NFL Player Names into players table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[id]"
                       dataType="i4"
-                      name="player_PK" />
+                      name="id" />
                     <externalMetadataColumn
                       refId="Package\NFL Player Names into players table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[firstName]"
                       dataType="wstr"
@@ -206,14 +220,6 @@
                       dataType="wstr"
                       length="50"
                       name="lastName" />
-                    <externalMetadataColumn
-                      refId="Package\NFL Player Names into players table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[team_FK]"
-                      dataType="i4"
-                      name="team_FK" />
-                    <externalMetadataColumn
-                      refId="Package\NFL Player Names into players table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[playerPosition_FK]"
-                      dataType="i4"
-                      name="playerPosition_FK" />
                     <externalMetadataColumn
                       refId="Package\NFL Player Names into players table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[isHealthy]"
                       dataType="i4"
@@ -228,6 +234,14 @@
                       dataType="wstr"
                       length="50"
                       name="isLoaded" />
+                    <externalMetadataColumn
+                      refId="Package\NFL Player Names into players table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[playerPositionid]"
+                      dataType="i4"
+                      name="playerPositionid" />
+                    <externalMetadataColumn
+                      refId="Package\NFL Player Names into players table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[teamid]"
+                      dataType="i4"
+                      name="teamid" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -270,9 +284,11 @@
                   description="Specifies the SQL statement used by the component to extract data."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT       zRawNFLRosters.firstName, zRawNFLRosters.lastName 
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        zRawNFLRosters.firstName, zRawNFLRosters.lastName, teamInformations.Id
 FROM            players RIGHT OUTER JOIN
-                         zRawNFLRosters ON players.firstName = zRawNFLRosters.firstName AND players.lastName = zRawNFLRosters.lastName
+                         locations INNER JOIN
+                         teamInformations ON locations.id = teamInformations.locationId INNER JOIN
+                         zRawNFLRosters ON locations.location = zRawNFLRosters.location ON players.firstName = zRawNFLRosters.firstName AND players.lastName = zRawNFLRosters.lastName
 WHERE        (players.isLoaded IS NULL)</property>
                 <property
                   dataType="System.Int32"
@@ -300,8 +316,8 @@ WHERE        (players.isLoaded IS NULL)</property>
               <connections>
                 <connection
                   refId="Package\NFL Player Names into players table\ADO NET Source.Connections[IDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[localhost.Playoff_Fantasy]"
-                  connectionManagerRefId="Package.ConnectionManagers[localhost.Playoff_Fantasy]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-U2HBKBD\SQLEXPRESS.FantasyDatabase]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-U2HBKBD\SQLEXPRESS.FantasyDatabase]"
                   description="Managed connection manager"
                   name="IDbConnection" />
               </connections>
@@ -312,37 +328,46 @@ WHERE        (players.isLoaded IS NULL)</property>
                   <outputColumns>
                     <outputColumn
                       refId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Output].Columns[firstName]"
-                      dataType="wstr"
+                      dataType="nText"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[firstName]"
-                      length="50"
                       lineageId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Output].Columns[firstName]"
                       name="firstName"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Output].Columns[lastName]"
-                      dataType="wstr"
+                      dataType="nText"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[lastName]"
-                      length="50"
                       lineageId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Output].Columns[lastName]"
                       name="lastName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Output].Columns[Id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Id]"
+                      lineageId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Output].Columns[Id]"
+                      name="Id"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
                       refId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[firstName]"
-                      dataType="wstr"
-                      length="50"
+                      dataType="nText"
                       name="firstName" />
                     <externalMetadataColumn
                       refId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[lastName]"
-                      dataType="wstr"
-                      length="50"
+                      dataType="nText"
                       name="lastName" />
+                    <externalMetadataColumn
+                      refId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -352,16 +377,19 @@ WHERE        (players.isLoaded IS NULL)</property>
                   <outputColumns>
                     <outputColumn
                       refId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[firstName]"
-                      dataType="wstr"
-                      length="50"
+                      dataType="nText"
                       lineageId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[firstName]"
                       name="firstName" />
                     <outputColumn
                       refId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[lastName]"
-                      dataType="wstr"
-                      length="50"
+                      dataType="nText"
                       lineageId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[lastName]"
                       name="lastName" />
+                    <outputColumn
+                      refId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Id]"
+                      dataType="i4"
+                      lineageId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Id]"
+                      name="Id" />
                     <outputColumn
                       refId="Package\NFL Player Names into players table\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -441,8 +469,8 @@ WHERE        (players.isLoaded IS NULL)</property>
               <connections>
                 <connection
                   refId="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination.Connections[IDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[localhost.Playoff_Fantasy]"
-                  connectionManagerRefId="Package.ConnectionManagers[localhost.Playoff_Fantasy]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-U2HBKBD\SQLEXPRESS.FantasyDatabase]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-U2HBKBD\SQLEXPRESS.FantasyDatabase]"
                   description="Managed connection manager"
                   name="IDbConnection" />
               </connections>
@@ -497,30 +525,38 @@ WHERE        (players.isLoaded IS NULL)</property>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
+                      refId="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
                       refId="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[playerPosition]"
                       dataType="wstr"
-                      length="100"
+                      length="2147483647"
                       name="playerPosition" />
                     <externalMetadataColumn
                       refId="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[firstName]"
                       dataType="wstr"
-                      length="50"
+                      length="2147483647"
                       name="firstName" />
                     <externalMetadataColumn
                       refId="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[lastName]"
                       dataType="wstr"
-                      length="50"
+                      length="2147483647"
                       name="lastName" />
                     <externalMetadataColumn
                       refId="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[location]"
                       dataType="wstr"
-                      length="50"
+                      length="2147483647"
                       name="location" />
                     <externalMetadataColumn
                       refId="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[teamName]"
                       dataType="wstr"
-                      length="50"
+                      length="2147483647"
                       name="teamName" />
+                    <externalMetadataColumn
+                      refId="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[teamid]"
+                      dataType="i4"
+                      name="teamid" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -778,7 +814,7 @@ WHERE        (players.isLoaded IS NULL)</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{D36FFEEE-EBA4-4C73-8DD3-A7F851065563}"
+          SQLTask:Connection="{DD7A5841-6888-4E5F-A769-92685B9EA910}"
           SQLTask:SqlStatementSource="truncate table zRawNFLRosters" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -795,7 +831,7 @@ WHERE        (players.isLoaded IS NULL)</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{D36FFEEE-EBA4-4C73-8DD3-A7F851065563}"
+          SQLTask:Connection="{DF63E6A5-498A-45E5-9876-F33C576F1B37}"
           SQLTask:SqlStatementSource="UPDATE       players&#xA;SET                isLoaded = 'Y'&#xA;WHERE        (isLoaded IS NULL)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -847,46 +883,28 @@ WHERE        (players.isLoaded IS NULL)</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="209,42"
+          Id="Package\Insert FK into players Table"
+          TopLeft="430,383" />
+        <NodeLayout
           Size="249,42"
           Id="Package\NFL Player Names into players table"
           TopLeft="414,289" />
+        <NodeLayout
+          Size="294,42"
+          Id="Package\NFL Playoff Roster Load into zRawNFLRosters"
+          TopLeft="387,128" />
         <NodeLayout
           Size="202,42"
           Id="Package\Truncate zRawNFLRosters"
           TopLeft="432,34" />
         <NodeLayout
-          Size="209,42"
-          Id="Package\Insert FK into players Table"
-          TopLeft="430,383" />
-        <NodeLayout
-          Size="294,42"
-          Id="Package\NFL Playoff Roster Load into zRawNFLRosters"
-          TopLeft="387,128" />
+          Size="184,42"
+          Id="Package\Update isLoaded to 'Y'"
+          TopLeft="449,465" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="533.5,76">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,52"
-              Start="0,0"
-              End="0,44.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,44.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="536.5,331">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -928,10 +946,28 @@ WHERE        (players.isLoaded IS NULL)</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="184,42"
-          Id="Package\Update isLoaded to 'Y'"
-          TopLeft="449,465" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="536.5,331">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52"
+              Start="0,0"
+              End="0,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
           TopLeft="537.75,425">
@@ -963,13 +999,13 @@ WHERE        (players.isLoaded IS NULL)</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="179,42"
-          Id="Package\NFL Player Names into players table\ADO NET Destination"
-          TopLeft="313,302" />
-        <NodeLayout
           Size="158,42"
           Id="Package\NFL Player Names into players table\ADO NET Source"
           TopLeft="283,135" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\NFL Player Names into players table\ADO NET Destination"
+          TopLeft="313,302" />
         <EdgeLayout
           Id="Package\NFL Player Names into players table.Paths[ADO NET Source Output]"
           TopLeft="362,177">
@@ -1015,19 +1051,27 @@ WHERE        (players.isLoaded IS NULL)</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\NFL Player Names into players table\ADO NET Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\NFL Playoff Roster Load into zRawNFLRosters">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="179,42"
-          Id="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination"
-          TopLeft="313,302" />
-        <NodeLayout
           Size="154,42"
           Id="Package\NFL Playoff Roster Load into zRawNFLRosters\cvs NFL Rosters"
           TopLeft="222,169" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination"
+          TopLeft="313,302" />
         <EdgeLayout
           Id="Package\NFL Playoff Roster Load into zRawNFLRosters.Paths[Flat File Source Output]"
           TopLeft="299,211">
@@ -1067,14 +1111,6 @@ WHERE        (players.isLoaded IS NULL)</property>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\NFL Playoff Roster Load into zRawNFLRosters\ADO NET Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\NFL Player Names into players table\ADO NET Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
